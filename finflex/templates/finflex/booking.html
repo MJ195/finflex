@@ -1,0 +1,50 @@
+{%  load static %}
+  
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finflex</title>
+    <!-- Main StyleSheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+
+</head>
+
+<body style="background-image: url('{% static "finflex/images/slider1.jpg" %}');" style="text-indent:550px;">
+    <!-- Brand -->
+    <a href="{% url "home" %}"><button class="btn btn-primary" >Home</button></a>
+   <br>
+   {% if messages %}
+						{%for msg in messages %}
+						<div  style="color:red ; background-color: white;">
+							{{msg}}
+						  </div>
+						
+						{% endfor %}
+						{%  endif %}
+{%  for booking_list in booking_lists %}
+<div class="row" >
+	<div class="col-md-5">
+		<div class="card card-body" >
+               <!-- <img
+                    src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
+-->
+                <h4>Name  :{{booking_list.user.username}} </h4>
+				<p><b>From:</b> {{booking_list.Check_in}}</p>
+				<p><b>To:</b>  {{booking_list.Check_out}}</p>
+                <p><b>Room No:</b>  {{booking_list.Room.No}}</p>
+                <p><b>Room Type:</b>  {{booking_list.Room.Type}}</p>
+                <p><b>booked at:</b> {{booking_list.Time}}</p>
+               <a href="{% url "delete" booking_list.id %}"> <h4 style="color:skyblue" onmouseover="this.style.color='red'" onmouseout="this.style.color='skyblue'">Cancel booking</h4> </a>
+            </div>
+        </div>
+    </div > 
+        
+{%  endfor %}
+      </body>
+
+</html>
+

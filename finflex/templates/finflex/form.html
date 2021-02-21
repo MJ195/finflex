@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        form
+    </title>
+</head>
+<body>
+<h1>forms</h1>
+{%  if msg %}:
+    {{msg}}
+    {% endif %}
+<form>
+    {%  csrf_token %}
+    {{form.as_p}}
+    <button type="submit">submit</button>
+</form>
+{% for r in room  %}
+<h1>{{r}}</h1>
+{% endfor %}
+
+
+</body>
+
+
+
+
+
+
+</html>
